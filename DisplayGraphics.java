@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class DisplayGraphics {
     private final int xOffset = 450;
@@ -20,7 +22,48 @@ public class DisplayGraphics {
             }
 
         };
+
+        MouseListener clickthingy = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println(e.getX()+" "+e.getY());
+                getGridLocationFromCursorx(e);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        };
+
+
         frame.add(panel);
+        frame.addMouseListener(clickthingy);
+
+    }
+
+    public void getGridLocationFromCursorx(MouseEvent e) {
+        float Startingnum  = e.getX();
+        Startingnum = Startingnum -  450;
+        Startingnum = Startingnum / 100;
+        Startingnum = (int) Math.floor(Startingnum);
+        Startingnum = Startingnum + 1;
+        System.out.println(Startingnum);
 
     }
 
@@ -42,5 +85,9 @@ public class DisplayGraphics {
     public void drawWalls(Graphics g) {
         g.setColor(Color.black);
         g.fillRect(200 + xOffset, 700, 100, 100);
+        g.fillRect(300 + xOffset, 700, 100, 100);
+        g.fillRect(400 + xOffset, 700, 100, 100);
+        g.fillRect(500 + xOffset, 700, 100, 100);
+        g.fillRect(600 + xOffset, 700, 100, 100);
     }
 }
