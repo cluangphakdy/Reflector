@@ -6,7 +6,11 @@ import java.awt.event.MouseListener;
 public class DisplayGraphics {
     private final int xOffset = 450;
 
+    private int cursorX=0;
+    private int cursorY=0;
+
     Color grey = new Color(105, 105, 105);
+    Color tryellow = new Color(255, 255, 0, 125);
     public void init() {
         JFrame frame = new JFrame();
         frame.setBounds(0, 0, 1920, 1080);
@@ -19,6 +23,7 @@ public class DisplayGraphics {
                 //g.drawRect(960, 540, 100, 150);
                 drawBoardEmpty(g);
                 drawWalls(g);
+                DrawSelectedSpace(g);
             }
 
         };
@@ -27,7 +32,10 @@ public class DisplayGraphics {
             @Override
             public void mouseClicked(MouseEvent e) {
                 System.out.println(e.getX()+" "+e.getY());
-                getGridLocationFromCursorx(e);
+                getGridLocationFromCursorx();
+                getGridLocationFromCursory();
+                cursorX = e.getX();
+                cursorY = e.getY();
             }
 
             @Override
@@ -57,15 +65,31 @@ public class DisplayGraphics {
 
     }
 
-    public void getGridLocationFromCursorx(MouseEvent e) {
-        float Startingnum  = e.getX();
+    public int getGridLocationFromCursorx() {
+        float Startingnum  = cursorX;
         Startingnum = Startingnum -  450;
         Startingnum = Startingnum / 100;
         Startingnum = (int) Math.floor(Startingnum);
         Startingnum = Startingnum + 1;
         System.out.println(Startingnum);
+        return (int) Startingnum;
 
     }
+    public int getGridLocationFromCursory() {
+        float Startingnum  = cursorY;
+        Startingnum = Startingnum / 100;
+        Startingnum = (int) Math.floor(Startingnum);
+        Startingnum = Startingnum + 1;
+        System.out.println(Startingnum);
+        return (int) Startingnum;
+
+    }
+    public void DrawSelectedSpace( Graphics g) {
+        g.setColor(tryellow);
+        g.fillRect(getGridLocationFromCursorx(), getGridLocationFromCursory(), 100, 100);
+
+    }
+
 
     public void drawBoardEmpty(Graphics g) {
         for(int i = 0; i < 10; i++) {
