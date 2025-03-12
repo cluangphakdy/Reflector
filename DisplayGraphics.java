@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 public class DisplayGraphics {
     private final int xOffset = 450;
@@ -23,7 +24,7 @@ public class DisplayGraphics {
                 //g.drawRect(960, 540, 100, 150);
                 drawBoardEmpty(g);
                 drawWalls(g);
-                DrawSelectedSpace(g);
+                drawSelectedSpace(g);
             }
 
         };
@@ -31,11 +32,9 @@ public class DisplayGraphics {
         MouseListener clickthingy = new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println(e.getX()+" "+e.getY());
                 getGridLocationFromCursorx();
                 getGridLocationFromCursory();
-                cursorX = e.getX();
-                cursorY = e.getY();
+
             }
 
             @Override
@@ -58,12 +57,29 @@ public class DisplayGraphics {
 
             }
         };
+        MouseMotionListener cursormove = new MouseMotionListener() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+
+
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                cursorX = e.getX();
+                cursorY = e.getY() - 27;
+                System.out.print("(" + getGridLocationFromCursorx() + "," + getGridLocationFromCursory() + ") \n");
+                panel.repaint();
+            }
+        };
 
 
         frame.add(panel);
         frame.addMouseListener(clickthingy);
+        frame.addMouseMotionListener(cursormove);
 
     }
+
 
     public int getGridLocationFromCursorx() {
         float Startingnum  = cursorX;
@@ -71,7 +87,6 @@ public class DisplayGraphics {
         Startingnum = Startingnum / 100;
         Startingnum = (int) Math.floor(Startingnum);
         Startingnum = Startingnum + 1;
-        System.out.println(Startingnum);
         return (int) Startingnum;
 
     }
@@ -80,15 +95,19 @@ public class DisplayGraphics {
         Startingnum = Startingnum / 100;
         Startingnum = (int) Math.floor(Startingnum);
         Startingnum = Startingnum + 1;
-        System.out.println(Startingnum);
         return (int) Startingnum;
 
     }
-    public void DrawSelectedSpace( Graphics g) {
+    public void drawSelectedSpace( Graphics g) {
         g.setColor(tryellow);
-        g.fillRect(getGridLocationFromCursorx(), getGridLocationFromCursory(), 100, 100);
+        if (cursorX < 450 || cursorX > 1449) return;
+        g.fillRect((getGridLocationFromCursorx() * 100) +xOffset - 100,  (getGridLocationFromCursory() *100) - 100, 100, 100);
 
     }
+    public void drawMirror(Graphics g) {
+        // TODO: g.drawImage(wqbdbqk)
+    }
+
 
 
     public void drawBoardEmpty(Graphics g) {
@@ -115,3 +134,5 @@ public class DisplayGraphics {
         g.fillRect(600 + xOffset, 700, 100, 100);
     }
 }
+
+
