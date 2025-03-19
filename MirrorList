@@ -1,0 +1,13 @@
+import java.util.ArrayList;
+
+public class MirrorList {
+     private ArrayList<Mirror> mirrorlist = new ArrayList<>();
+     public void add(Mirror m){
+         mirrorlist.add(m);
+     }
+
+     public Mirror get(int i){
+         return mirrorlist.get(i);
+     }
+
+}
