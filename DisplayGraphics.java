@@ -1,8 +1,12 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class DisplayGraphics {
     private final int xOffset = 450;
@@ -25,6 +29,11 @@ public class DisplayGraphics {
                 drawBoardEmpty(g);
                 drawWalls(g);
                 drawSelectedSpace(g);
+                try {
+                    drawMirror(g);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
         };
@@ -104,8 +113,10 @@ public class DisplayGraphics {
         g.fillRect((getGridLocationFromCursorx() * 100) +xOffset - 100,  (getGridLocationFromCursory() *100) - 100, 100, 100);
 
     }
-    public void drawMirror(Graphics g) {
-        // TODO: g.drawImage(wqbdbqk)
+    public void drawMirror(Graphics g) throws IOException {
+        File mirror = new File("src/costume1.png");
+        BufferedImage mirrorimg = ImageIO.read(mirror);
+        g.drawImage(mirrorimg, 500, 500, 75, 75, null);
     }
 
 
