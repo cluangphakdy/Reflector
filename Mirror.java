@@ -16,4 +16,8 @@ public class Mirror {
 
 
     }
+    public void prntmirrorvalues() {
+        System.out.println(this.x + " "+ this.y + " "+ this.rotdegree);
+
+    }
 }
