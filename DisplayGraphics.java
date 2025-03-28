@@ -43,6 +43,8 @@ public class DisplayGraphics {
             public void mouseClicked(MouseEvent e) {
                 getGridLocationFromCursorx();
                 getGridLocationFromCursory();
+                MirrorList.prntmirrorList();
+
 
             }
 
@@ -77,7 +79,6 @@ public class DisplayGraphics {
             public void mouseMoved(MouseEvent e) {
                 cursorX = e.getX();
                 cursorY = e.getY() - 27;
-                System.out.print("(" + getGridLocationFromCursorx() + "," + getGridLocationFromCursory() + ") \n");
                 panel.repaint();
             }
         };
