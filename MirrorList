@@ -1,13 +1,31 @@
 import java.util.ArrayList;
 
 public class MirrorList {
-     private ArrayList<Mirror> mirrorlist = new ArrayList<>();
-     public void add(Mirror m){
+     private static ArrayList<Mirror> mirrorlist = new ArrayList<>();
+     public static void add(Mirror m){
          mirrorlist.add(m);
+
      }
 
      public Mirror get(int i){
          return mirrorlist.get(i);
      }
+
+     public static void prntmirrorList()  {
+         for (Mirror m: mirrorlist) {
+             m.prntmirrorvalues();
+
+         }
+
+
+     }
+
+     //public void placemirrorslevel1() {
+
+
+
+     //}
+    //TODO: Mirror level 1 placement: (4,9), (9,9), (6,5), (2,5), (6, 1)
+    //TODO: assuming grid is 0 by 10 and topmost left square is (1,1)
 
 }
