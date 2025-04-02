@@ -1,11 +1,11 @@
 public class Floor {
     private static String[][] board = new String[20][10];
     /**
-   [-"empty" = empty places of board, no mirror, no laser, maybe background
-    -"lazer" = lazer
-    -"mirror" = mirror, reflects the lazer, what player is controlling
-    -"mirror90" = rotation value of the mirror, ex: mirror rotated 90 degrees]
-    Bracket text is part of board
+     [-"empty" = empty places of board, no mirror, no laser, maybe background
+     -"lazer" = lazer
+     -"mirror" = mirror, reflects the lazer, what player is controlling
+     -"mirror90" = rotation value of the mirror, ex: mirror rotated 90 degrees]
+     Bracket text is part of board
      */
 
     public static void main(String[] args){
