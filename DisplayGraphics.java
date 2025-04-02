@@ -30,7 +30,7 @@ public class DisplayGraphics {
                 drawWalls(g);
                 drawSelectedSpace(g);
                 try {
-                    drawMirror(g);
+                    MirrorList.placemirrorslevel1();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -114,11 +114,7 @@ public class DisplayGraphics {
         g.fillRect((getGridLocationFromCursorx() * 100) +xOffset - 100,  (getGridLocationFromCursory() *100) - 100, 100, 100);
 
     }
-    public void drawMirror(Graphics g) throws IOException {
-        File mirror = new File("src/costume1.png");
-        BufferedImage mirrorimg = ImageIO.read(mirror);
-        g.drawImage(mirrorimg, 500, 500, 75, 75, null);
-    }
+
 
 
 
@@ -146,5 +142,4 @@ public class DisplayGraphics {
         g.fillRect(600 + xOffset, 700, 100, 100);
     }
 }
-
 
