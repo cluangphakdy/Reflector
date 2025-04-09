@@ -28,7 +28,7 @@ public class MirrorList {
     }
 
     public  static void placemirrorslevel1() throws IOException {
-        add(new Mirror(4,8, 0));
+        add(new Mirror(4,8, 45));
         add(new Mirror(9, 8, 0));
         add(new Mirror(6, 5, 0));
         add(new Mirror(2, 5, 0));
@@ -52,5 +52,6 @@ public class MirrorList {
     //}
     //TODO: Mirror level 1 placement: (4,9), (9,9), (6,5), (2,5), (6, 1)
     //TODO: assuming grid is 0 by 10 and topmost left square is (1,1)
+    //TODO: print something when clicking on a mirror for 4/9
 
 }
