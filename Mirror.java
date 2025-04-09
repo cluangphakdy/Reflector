@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -6,13 +7,17 @@ import java.io.IOException;
 public class Mirror {
     private int x, y;
     private int rotdegree;
-    private BufferedImage img;
+    private static BufferedImage img;
 
     public Mirror(int px, int py, int deg) throws IOException {
         this.x = px;
         this.y = py;
         this.rotdegree = deg;
-        this.img = ImageIO.read(new File("src/costume1.png"));
+        this.img = ImageIO.read(new File("src/Mirror" + deg + ".png"));
+    }
+    public void drawMirror(Graphics g, int x, int y, int deg) throws IOException {
+        //BufferedImage mirrorimg = ImageIO.read(img);
+        g.drawImage(img, x, y, 50, 75, null);
     }
 
     public void prntmirrorvalues() {
