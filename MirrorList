@@ -8,15 +8,12 @@ import java.util.HashSet;
 
 public class MirrorList {
     private static HashSet<Mirror> mirrorlist = new HashSet<>();
+    File mirror = new File("src/Mirror0.png");
     public static void add(Mirror m){
         mirrorlist.add(m);
 
     }
-    public void drawMirror(Graphics g, int x, int y, int deg) throws IOException {
-        File mirror = new File("src/costume1.png");
-        BufferedImage mirrorimg = ImageIO.read(mirror);
-        g.drawImage(mirrorimg, 500, 500, 75, 75, null);
-    }
+
 
 
 
@@ -31,8 +28,8 @@ public class MirrorList {
     }
 
     public  static void placemirrorslevel1() throws IOException {
-        add(new Mirror(4,9, 0));
-        add(new Mirror(9, 9, 0));
+        add(new Mirror(4,8, 0));
+        add(new Mirror(9, 8, 0));
         add(new Mirror(6, 5, 0));
         add(new Mirror(2, 5, 0));
         add(new Mirror(6, 1, 0));
@@ -40,9 +37,10 @@ public class MirrorList {
 
 
     }
-    public void drawMirrors(Graphics g) throws IOException {
+    public static void drawMirrors(Graphics g) throws IOException {
         for (Mirror m: mirrorlist) {
-            drawMirror(g, m.getMirrorx(), m.getMirrory(), m.getMirrordeg());
+            m.drawMirror(g,  460 + (m.getMirrorx() * 100), m.getMirrory() * 102, m.getMirrordeg());
+
 
         }
 
