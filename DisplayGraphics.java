@@ -31,9 +31,11 @@ public class DisplayGraphics {
                 drawSelectedSpace(g);
                 try {
                     MirrorList.placemirrorslevel1();
+                    MirrorList.drawMirrors(g);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+
             }
 
         };
@@ -44,6 +46,7 @@ public class DisplayGraphics {
                 getGridLocationFromCursorx();
                 getGridLocationFromCursory();
                 MirrorList.prntmirrorList();
+                MirrorList.checkifMirrorhere(getGridLocationFromCursorx(), getGridLocationFromCursory());
 
 
             }
