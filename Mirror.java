@@ -7,17 +7,19 @@ import java.io.IOException;
 public class Mirror {
     private int x, y;
     private int rotdegree;
-    private static BufferedImage img;
+    private BufferedImage img;
 
     public Mirror(int px, int py, int deg) throws IOException {
         this.x = px;
         this.y = py;
-        this.rotdegree = deg;
-        this.img = ImageIO.read(new File("src/Mirror" + deg + ".png"));
+        //this.rotdegree = deg;
+        System.out.println("src/Mirror"+ deg + ".png");
+        this.img = deg;
     }
-    public void drawMirror(Graphics g, int x, int y, int deg) throws IOException {
+
+    public void drawMirror(Graphics g, int x, int y) throws IOException {
         //BufferedImage mirrorimg = ImageIO.read(img);
-        g.drawImage(img, x, y, 50, 75, null);
+        g.drawImage(this.img, x, y, 50, 75, null);
     }
 
     public void prntmirrorvalues() {
