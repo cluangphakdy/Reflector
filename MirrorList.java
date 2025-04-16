@@ -8,7 +8,6 @@ import java.util.HashSet;
 
 public class MirrorList {
     private static HashSet<Mirror> mirrorlist = new HashSet<>();
-    File mirror = new File("src/Mirror0.png");
     public static void add(Mirror m){
         mirrorlist.add(m);
 
@@ -28,23 +27,32 @@ public class MirrorList {
     }
 
     public  static void placemirrorslevel1() throws IOException {
-        add(new Mirror(4,8, 45));
-        add(new Mirror(9, 8, 0));
-        add(new Mirror(6, 5, 0));
-        add(new Mirror(2, 5, 0));
-        add(new Mirror(6, 1, 0));
-        add(new Mirror(6, 1, 0));
+        add(new Mirror(4,8, ImageIO.read(new File("src/Mirror135.png"))));
+        add(new Mirror(9, 8, ImageIO.read(new File("src/Mirror135.png"))));
+        add(new Mirror(6, 5, ImageIO.read(new File("src/Mirror90.png"))));
+        add(new Mirror(2, 5, ImageIO.read(new File("src/Mirror225.png"))));
+        add(new Mirror(6, 1, ImageIO.read(new File("src/Mirror135.png"))));
+        add(new Mirror(6, 1, ImageIO.read(new File("src/Mirror135.png"))));
 
 
     }
     public static void drawMirrors(Graphics g) throws IOException {
         for (Mirror m: mirrorlist) {
-            m.drawMirror(g,  460 + (m.getMirrorx() * 100), m.getMirrory() * 102, m.getMirrordeg());
+            m.drawMirror(g,  460 + (m.getMirrorx() * 100), m.getMirrory() * 102);
 
 
         }
 
 
+    }
+
+    public static void checkifMirrorhere(int clickX, int clickY){
+        for (Mirror m: mirrorlist) {
+            //System.out.println("CLICKX: "+ clickX + "CLICKY: " + clickY + "MIRRORX: " + m.getMirrorx() + "MIRRORY: "+ m.getMirrory() );
+            if (clickX-1 == m.getMirrorx() && clickY-1 == m.getMirrory()) {
+                System.out.println("Mirror clicked");
+            }
+        }
     }
 
 
