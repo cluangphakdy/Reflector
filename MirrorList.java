@@ -27,12 +27,12 @@ public class MirrorList {
     }
 
     public  static void placemirrorslevel1() throws IOException {
-        add(new Mirror(4,8, ImageIO.read(new File("src/Mirror135.png"))));
-        add(new Mirror(9, 8, ImageIO.read(new File("src/Mirror135.png"))));
-        add(new Mirror(6, 5, ImageIO.read(new File("src/Mirror90.png"))));
-        add(new Mirror(2, 5, ImageIO.read(new File("src/Mirror225.png"))));
-        add(new Mirror(6, 1, ImageIO.read(new File("src/Mirror135.png"))));
-        add(new Mirror(6, 1, ImageIO.read(new File("src/Mirror135.png"))));
+        add(new Mirror(4,8, 0));
+        add(new Mirror(9, 8, 0));
+        add(new Mirror(6, 5, 0));
+        add(new Mirror(2, 5, 0));
+        add(new Mirror(6, 1, 0));
+        add(new Mirror(6, 1, 0));
 
 
     }
@@ -46,11 +46,12 @@ public class MirrorList {
 
     }
 
-    public static void checkifMirrorhere(int clickX, int clickY){
+    public static void checkifMirrorhere(int clickX, int clickY) throws IOException {
         for (Mirror m: mirrorlist) {
             //System.out.println("CLICKX: "+ clickX + "CLICKY: " + clickY + "MIRRORX: " + m.getMirrorx() + "MIRRORY: "+ m.getMirrory() );
             if (clickX-1 == m.getMirrorx() && clickY-1 == m.getMirrory()) {
                 System.out.println("Mirror clicked");
+                m.mirrorRotate();
             }
         }
     }
