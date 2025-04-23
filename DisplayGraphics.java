@@ -46,13 +46,19 @@ public class DisplayGraphics {
                 getGridLocationFromCursorx();
                 getGridLocationFromCursory();
                 MirrorList.prntmirrorList();
-                MirrorList.checkifMirrorhere(getGridLocationFromCursorx(), getGridLocationFromCursory());
+
 
 
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
+                try {
+                    MirrorList.checkifMirrorhere(getGridLocationFromCursorx(), getGridLocationFromCursory());
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                panel.repaint();
 
             }
 
