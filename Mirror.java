@@ -7,14 +7,13 @@ import java.io.IOException;
 public class Mirror {
     private int x, y;
     private int rotdegree;
-    private BufferedImage img;
+    private BufferedImage img; //used to be static
 
     public Mirror(int px, int py, int deg) throws IOException {
         this.x = px;
         this.y = py;
-        //this.rotdegree = deg;
-        System.out.println("src/Mirror"+ deg + ".png");
-        this.img = deg;
+        this.rotdegree = deg;
+        this.img = ImageIO.read(new File("src/Mirror" + deg + ".png"));
     }
 
     public void drawMirror(Graphics g, int x, int y) throws IOException {
@@ -25,6 +24,20 @@ public class Mirror {
     public void prntmirrorvalues() {
         System.out.println(this.x + " " + this.y + " " + this.rotdegree);
     }
+
+    public void mirrorRotate() throws IOException {
+        rotdegree+= 45;
+        if (rotdegree >= 360) {
+            rotdegree-= rotdegree;
+        }
+        System.out.println(rotdegree);
+        this.img = ImageIO.read(new File("src/Mirror" + rotdegree + ".png"));
+    }
+
+
+
+
+
 
     @Override
     public boolean equals(Object m) {
