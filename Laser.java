@@ -1,4 +1,12 @@
+import java.awt.*;
+import java.util.ArrayList;
+
 public class Laser {
+    ArrayList<Point> beam;
+    public Laser() {
+        beam=new ArrayList<>();
+    }
+
 }
 
 
