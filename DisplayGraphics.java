@@ -11,6 +11,9 @@ import java.io.IOException;
 public class DisplayGraphics {
     private final int xOffset = 450;
 
+
+
+
     private int cursorX=0;
     private int cursorY=0;
 
@@ -33,6 +36,12 @@ public class DisplayGraphics {
                     MirrorList.placemirrorslevel1();
                     MirrorList.drawMirrors(g);
                 } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                try{
+                    Laserstart laserstarter = new Laserstart(810, 960);
+                    laserstarter.drawStart(g);
+                } catch(IOException e){
                     throw new RuntimeException(e);
                 }
 
