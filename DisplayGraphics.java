@@ -31,6 +31,7 @@ public class DisplayGraphics {
                 //g.drawRect(960, 540, 100, 150);
                 drawBoardEmpty(g);
                 drawWalls(g);
+                Laser.addPoints();
                 drawSelectedSpace(g);
                 try {
                     MirrorList.placemirrorslevel1();
@@ -44,6 +45,7 @@ public class DisplayGraphics {
                 } catch(IOException e){
                     throw new RuntimeException(e);
                 }
+                Laser.drawLaser(g);
 
             }
 
