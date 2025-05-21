@@ -13,6 +13,11 @@ public class MirrorList {
 
     }
 
+    public static HashSet<Mirror> getMirrorlist() {
+        return mirrorlist;
+    }
+
+
 
 
 
@@ -58,9 +63,5 @@ public class MirrorList {
 
 
 
-    //}
-    //TODO: Mirror level 1 placement: (4,9), (9,9), (6,5), (2,5), (6, 1)
-    //TODO: assuming grid is 0 by 10 and topmost left square is (1,1)
-    //TODO: print something when clicking on a mirror for 4/9
 
 }
