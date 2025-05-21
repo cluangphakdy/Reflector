@@ -53,8 +53,6 @@ public class Mirror {
 
 
 
-
-
     @Override
     public boolean equals(Object m) {
         if (this == m) return true;
