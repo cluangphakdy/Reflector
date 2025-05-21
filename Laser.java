@@ -9,12 +9,38 @@ public class Laser {
 
     }
 
-    public static void addPoints(){
+    public static void addPoints(int[] start){
         beam = new ArrayList<int[]>();
-        beam.add(new int[]{400, 400});
-        beam.add(new int[]{600, 600});
-        beam.add(new int[]{700, 900});
+        beam.add(start);
+        String direction = "up";
+        ArrayList<Mirror> axisMirrors = new ArrayList<Mirror>();
+        boolean stopped = false;
+        while (!stopped) {
+            int[] point = beam.get(beam.size()-1);
+            if (direction == "up"){
+                for (Mirror mirror: MirrorList.getMirrorlist()){
+                    if (point[0] == mirror.getMirrorx() && point[1] > mirror.getMirrory()) {
+                        axisMirrors.add(mirror);
 
+                    }
+
+                }
+                if (axisMirrors.size() > 0){
+                    Mirror closestMirror = axisMirrors.get(0);
+                    for (Mirror mirror: axisMirrors) {
+                        if (mirror.getMirrory() > closestMirror.getMirrory()) {
+                            closestMirror = mirror;
+                        }
+                    }
+                    beam.add(new int[]{closestMirror.getMirrorx(), closestMirror.getMirrory()});
+
+                } else{ stopped = true; }
+
+
+            }
+
+
+        }
     }
     static public void drawLaser(Graphics g){
         g.setColor(Color.red);
