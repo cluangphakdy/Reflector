@@ -14,13 +14,22 @@ public class Laser {
         beam.add(start);
         String direction = "up";
         ArrayList<Mirror> axisMirrors = new ArrayList<Mirror>();
+        ArrayList<Wall> axisWalls = new ArrayList<Wall>();
         boolean stopped = false;
         while (!stopped) {
+            axisMirrors.clear();
             int[] point = beam.get(beam.size()-1);
             if (direction == "up"){
                 for (Mirror mirror: MirrorList.getMirrorlist()){
                     if (point[0] == mirror.getMirrorx() && point[1] > mirror.getMirrory()) {
                         axisMirrors.add(mirror);
+
+                    }
+
+                }
+                for (Wall wall: WallList.getwalllist()){
+                    if (point[0] == wall.getWallx() && point[1] > wall.getWally()) {
+                        axisWalls.add(wall);
 
                     }
 
@@ -32,9 +41,29 @@ public class Laser {
                             closestMirror = mirror;
                         }
                     }
-                    beam.add(new int[]{closestMirror.getMirrorx(), closestMirror.getMirrory()});
+                    if (axisWalls.size() > 0) {
 
+                        Wall closestWall = axisWalls.get(0);
+                        for (Wall wall : axisWalls) {
+                            if (wall.getWally() > closestWall.getWally()) {
+                                closestWall = wall;
+                            }
+                        }
+                        if (closestWall.getWally() > closestMirror.getMirrory()) {
+                            beam.add(new int[]{closestWall.getWallx(), closestWall.getWally()});
+                            stopped = true;
+
+                        } else {
+                            beam.add(new int[]{closestMirror.getMirrorx(), closestMirror.getMirrory()});
+
+                        }
+                    } else{
+                        beam.add(new int[]{closestMirror.getMirrorx(), closestMirror.getMirrory()});
+
+                    }
                 } else{ stopped = true; }
+
+
 
 
             }
@@ -49,7 +78,7 @@ public class Laser {
         for (int i = 1; i < beam.size(); i++){
             int[] point1 = beam.get(i-1);
             int[] point2 = beam.get(i);
-            g2.drawLine(point1[0], point1[1], point2[0], point2[1]);
+            g2.drawLine(485 + point1[0] * 100,  60 + point1[1]* 100, 485 + point2[0] * 100, 60 + point2[1]* 100);
 
         }
         System.out.println(beam.size());
