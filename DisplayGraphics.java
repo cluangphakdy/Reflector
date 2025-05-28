@@ -30,12 +30,13 @@ public class DisplayGraphics {
                 super.paintComponent(g);
                 //g.drawRect(960, 540, 100, 150);
                 drawBoardEmpty(g);
-                drawWalls(g);
-                Laser.addPoints();
+                Laser.addPoints(new int[]{4,9});
                 drawSelectedSpace(g);
                 try {
                     MirrorList.placemirrorslevel1();
                     MirrorList.drawMirrors(g);
+                    WallList.placewallslevel1();
+                    WallList.drawWalls(g);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -153,13 +154,6 @@ public class DisplayGraphics {
 
 
     }
-    public void drawWalls(Graphics g) {
-        g.setColor(Color.black);
-        g.fillRect(200 + xOffset, 700, 100, 100);
-        g.fillRect(300 + xOffset, 700, 100, 100);
-        g.fillRect(400 + xOffset, 700, 100, 100);
-        g.fillRect(500 + xOffset, 700, 100, 100);
-        g.fillRect(600 + xOffset, 700, 100, 100);
-    }
+
 }
 
