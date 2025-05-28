@@ -1,0 +1,45 @@
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class WallList {
+    private static HashSet<Wall> walllist = new HashSet<>();
+    public static void add(Wall m){
+        walllist.add(m);
+
+    }
+
+    public static HashSet<Wall> getwalllist() {
+        return walllist;
+    }
+
+
+    public  static void placewallslevel1() throws IOException {
+        add(new Wall(4,7));
+        add(new Wall(2, 7));
+        add(new Wall(3, 7));
+        add(new Wall(5, 7));
+        add(new Wall(6, 7));
+
+
+    }
+    public static void drawWalls(Graphics g) throws IOException {
+        g.setColor(Color.black);
+        for (Wall m: walllist) {
+            m.drawWall(g,  450 + (m.getWallx() * 100), m.getWally() * 100);
+
+
+        }
+
+
+    }
+
+
+
+
+
+}
